@@ -54,7 +54,11 @@ class ViewController: UIViewController,
                 let placemark = placemarks?[0]
                 let userPlacemark = CLPlacemark(placemark: placemark!)
                 
-                self.adress.text = "\(userPlacemark.subLocality!), \(userPlacemark.postalCode!), \(userPlacemark.country!)"
+                if let address = userPlacemark.subLocality {
+                    self.adress.text = "\(userPlacemark.subLocality!), \(userPlacemark.postalCode!), \(userPlacemark.country!)"
+                } else {
+                    self.adress.text = "Not found"
+                }
             }
         }
         
